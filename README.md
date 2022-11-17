@@ -1,0 +1,2 @@
+# SovietChess
+L'échec Soviétique
