@@ -134,39 +134,8 @@ bool Echequier::deplacer_Piece(Piece* pPiece, Joueur* pJoueur, int m_x, int m_y)
 void Echequier::afficher_B(){
 
 
-cout << endl << "  87654321" << endl;
+cout << endl << "  abcdefgh" << endl;
   for ( int y = 8; y >= 1; y-- ) // Nous permet d'afficher les noirs d'abord puis ensuite les blancs. On parcoure notre tableau a l'envers.
-    {
-      cout << y << " ";
-      for ( int x = 8; x >= 1; x-- )
-	{
-	  char c;
-	  Piece * p = trouver_Piece( x, y );
-      #ifdef DEBUG_AFFICHAGE
-        cout << "Pièce : " << x+y*8 << endl;
-        #endif
-
-	  if ( p == NULL ){
-	    c = ( ( x + y ) % 2 ) == 0 ? '#' : '.';
-        }
-	  else{
-
-	    c = p->r_code();
-        }
-	  cout << c;
-	}
-      cout << " " << y << endl;
-    }
-  cout << "  87654321" << endl;
-
-}
-
-//On pourrait faire une fonction pour afficher en fonction du Joueur.
-void Echequier::afficher_N(){
-
-
-cout << endl << "  87654321" << endl;
-  for ( int y = 1; y <= 8; y++ ) // Nous permet d'afficher les noirs d'abord puis ensuite les blancs. On parcoure notre tableau a l'envers.
     {
       cout << y << " ";
       for ( int x = 1; x <= 8; x++ )
@@ -188,6 +157,37 @@ cout << endl << "  87654321" << endl;
 	}
       cout << " " << y << endl;
     }
-  cout << "  87654321" << endl;
+  cout << "  abcdefgh" << endl;
+
+}
+
+//On pourrait faire une fonction pour afficher en fonction du Joueur.
+void Echequier::afficher_N(){
+
+
+cout << endl << "  hgfedcba" << endl;
+  for ( int y = 1; y <= 8; y++ ) // Nous permet d'afficher les noirs d'abord puis ensuite les blancs. On parcoure notre tableau a l'envers.
+    {
+      cout << y << " ";
+      for ( int x = 8; x >= 1; x-- )
+	{
+	  char c;
+	  Piece * p = trouver_Piece( x, y );
+      #ifdef DEBUG_AFFICHAGE
+        cout << "Pièce : " << x+y*8 << endl;
+        #endif
+
+	  if ( p == NULL ){
+	    c = ( ( x + y ) % 2 ) == 0 ? '#' : '.';
+        }
+	  else{
+
+	    c = p->r_code();
+        }
+	  cout << c;
+	}
+      cout << " " << y << endl;
+    }
+  cout << "  hgfedcba" << endl;
 
 }

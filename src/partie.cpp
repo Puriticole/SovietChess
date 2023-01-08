@@ -4,6 +4,7 @@
 #define DEBUG
 
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -16,8 +17,16 @@ Partie::Partie(){
 }
 
 
+void Partie::coord(){
+    string move;
+    cin >> move;
+    x = (int)move[0]-96; //Le x étant sous forme de char ou lettre, on sait que la valeur int de a est 97, on vient le ramener à 1.
+    y = (int)move[1]-48;
+    m_x = (int)move[2]-96;
+    m_y = (int)move[3]-48;
+}
+
 bool Partie::verif_Coord(){
-    cout << "X = ";cin >> x;cout << "Y = ";cin >> y;cout << " mX = ";cin >> m_x;cout << " m_Y = ";cin >> m_y;
     if(p.is_In_The_Boad(x,y) && p.is_In_The_Boad(m_x,m_y))
     {
         return true;
@@ -108,17 +117,17 @@ void Partie::Jouons(){
 
         //Qui doit jouer ?
         if (j_Act){
+             e.afficher_B(); //Affiche le plateau vue blanc (pièce blanches en bas du terminal).
             cout << "Au tour du joueur blanc :" << endl;
-            e.afficher_B();
         }else{
+            e.afficher_N(); //Affiche le plateau vue noir (pièce noires en bas du terminal).
             cout << "Au tour du joueur noir :" << endl;
-            e.afficher_N();
         }
 
         //Entrée des coordonnées par le joueur && vérification
-        while(!verif_Coord() && !verif_Color() && !is_Piece()){
-            verif_Coord();
-        };
+        do{
+            coord();
+        }while(!verif_Coord() && !verif_Color() && !is_Piece());
 
         // Déplacement de la pièce
         e.deplacer_Piece(e.trouver_Piece(x,y),j_Act?&JB:&JN,m_x,m_y);

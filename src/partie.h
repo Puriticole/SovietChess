@@ -4,6 +4,7 @@
 #include "piece.h"
 #include "joueur.h"
 #include "echequier.h"
+#include <string>
 
 class Partie{
 
@@ -16,7 +17,7 @@ protected :
     int x, y, m_x, m_y; //Coordonées déplacement
 public :
     Partie();
-    void init_Partie();
+    void coord();
     void Jouons(); // Notre boucle principale de partie
     void fin_Partie(); //Avec les option de revanche etc
     bool verif_Coord();
